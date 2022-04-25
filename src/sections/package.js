@@ -9,106 +9,102 @@ import SectionHeader from 'components/section-header';
 import { IoIosCheckmarkCircle, IoIosCloseCircle } from 'react-icons/io';
 
 const packages = {
-  monthly: [
+  homeInspection: [
     {
       id: 1,
-      name: 'Free Plan',
-      description: 'For Small teams or office',
-      buttonText: 'Start free trail',
-      priceWithUnit: '$0',
+      name: 'Home Inspection',
+      description: 'For Single Family Homes',
+      buttonText: 'Contact Us',
+      priceWithUnit: '$300',
       points: [
         {
           id: 1,
           icon: <IoIosCheckmarkCircle />,
-          text: 'Drag & Drop Builder',
+          text: '4 Point Inspection',
           isAvailable: true,
         },
         {
           id: 2,
           icon: <IoIosCheckmarkCircle />,
-          text: "1,000's of Templates",
+          text: 'Sewer Scope Inspection',
           isAvailable: true,
         },
         {
           id: 3,
           icon: <IoIosCheckmarkCircle />,
-          text: 'Blog Support Tools',
+          text: 'Termite Inspection',
           isAvailable: true,
         },
         {
           id: 4,
-          icon: <IoIosCloseCircle />,
-          text: 'eCommerce Store ',
+          icon: <IoIosCheckmarkCircle />,
+          text: 'Swimming Pool Inspection',
           isAvailable: true,
         },
       ],
     },
     {
       id: 2,
-      name: 'Business king',
-      description: 'For Enterprise business',
-      priceWithUnit: '$15',
-      buttonText: 'Create account',
-      anotherOption: 'Or Start 14 Days trail',
+      name: 'Multi-Family Inspection',
+      description: 'For Duplexes to Quadplexes',
+      priceWithUnit: '$500',
+      buttonText: 'Contact Us',
       points: [
         {
           id: 1,
           icon: <IoIosCheckmarkCircle />,
-          text: 'Drag & Drop Builder',
+          text: '4 Point Inspection',
           isAvailable: true,
         },
         {
           id: 2,
           icon: <IoIosCheckmarkCircle />,
-          text: "1,000's of Templates",
+          text: 'Termite Inspection',
           isAvailable: true,
         },
         {
           id: 3,
           icon: <IoIosCheckmarkCircle />,
-          text: 'Blog Support Tools',
+          text: 'Roof Inspection',
           isAvailable: true,
         },
         {
           id: 4,
           icon: <IoIosCheckmarkCircle />,
-          text: 'eCommerce Store ',
+          text: 'Foundation Inspection ',
           isAvailable: true,
         },
       ],
     },
     {
       id: 3,
-      header: 'Suggested',
-      headerIcon: <IoIosCheckmarkCircle />,
-      name: 'Pro Master',
-      description: 'For pro level developers',
-      priceWithUnit: '$24',
-      buttonText: 'Create account',
-      anotherOption: 'Or Start 14 Days trail',
+      name: 'Commercial Inspection',
+      description: 'For Commercial Properties or Apartments',
+      priceWithUnit: '$1000',
+      buttonText: 'Contact Us',
       points: [
         {
           id: 1,
           icon: <IoIosCheckmarkCircle />,
-          text: 'Drag & Drop Builder',
+          text: '4 Point Inspection',
           isAvailable: true,
         },
         {
           id: 2,
           icon: <IoIosCheckmarkCircle />,
-          text: "1,000's of Templates",
+          text: 'Termite Inspection',
           isAvailable: true,
         },
         {
           id: 3,
           icon: <IoIosCheckmarkCircle />,
-          text: 'Blog Support Tools',
+          text: 'Roof Inspection',
           isAvailable: true,
         },
         {
           id: 4,
           icon: <IoIosCheckmarkCircle />,
-          text: 'eCommerce Store ',
+          text: 'Foundation Inspection ',
           isAvailable: true,
         },
       ],
@@ -240,7 +236,7 @@ const responsive = {
 };
 
 export default function Package() {
-  const { monthly, annual } = packages;
+  const { homeInspection } = packages;
 
   const sliderParams = {
     additionalTransfrom: 0,
@@ -266,7 +262,30 @@ export default function Package() {
   };
 
   return (
-    <h1>Package</h1>
+    <section id="pricing" sx={{ cariant: 'section.pricing' }}>
+      <Container>
+        <SectionHeader
+          slogan="Our Pricing"
+          title="Book Your Inspection Today!"
+        />
+        <Flex sx={styles.buttonGroup}>
+          <Box sx={styles.buttonGroupInner}>
+
+          </Box>
+        </Flex>
+        <Box sx={styles.pricingWrapper} className="pricing_wrapper">
+        <Carousel
+        {...sliderParams}>
+          { homeInspection.map((item) => (
+            <Box sx={styles.pricingItem} key={item.id}>
+              <PriceCard data={item}/>
+
+            </Box>
+          ))}
+        </Carousel>
+        </Box>
+      </Container>
+    </section>
   );
 }
 

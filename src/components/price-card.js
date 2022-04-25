@@ -14,7 +14,28 @@ export default function PriceCard({
   },
 }) {
   return (
-    <h1>PriceCard</h1>
+   <Card
+   className={header ? 'package__card active': ''}
+   sx={styles.pricingBox}>
+     {header && <Text sx={styles.header}></Text>}
+    <Box className={'package_header'} sx={styles.pricingHeader}>
+      <Heading className='package__name' variant='title'>
+        {name}
+      </Heading>
+    <Text as='p'>
+      {description}
+      </Text>  
+    </Box>
+    <List items={points} childStyle={styles.listItem}/>
+   <Text className='package__price' sx={styles.price} >
+     {priceWithUnit}
+   </Text>
+   <Box sx={styles.buttonGroup}>
+     <Button variant='text_special' aria-label={buttonText} sx={styles.button}>
+       {buttonText}
+     </Button>
+   </Box>
+   </Card>
   );
 }
 
@@ -62,6 +83,9 @@ const styles = {
     top: '-17px',
     letterSpacing: '-.14px',
     px: '12px',
+  },
+  button: {
+    backgroundColor: 'text_special',
   },
   pricingHeader: {
     justifyContent: 'space-between',

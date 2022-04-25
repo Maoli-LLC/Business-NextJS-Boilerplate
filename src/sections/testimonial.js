@@ -13,9 +13,9 @@ import Avatar4 from 'assets/testimonial/avatar4.png';
 const data = [
   {
     id: 1,
-    title: 'Modern look & trending design',
+    title: 'Best Inspection',
     description:
-      'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
+      'It was great working with Travis. All the headaches that come with buying a home at least I know this is one I won’t have to worry about. Many thanks!',
     avatar: Avatar1,
     name: 'Denny Hilguston',
     designation: '@denny.hil',
@@ -23,9 +23,9 @@ const data = [
   },
   {
     id: 2,
-    title: 'Design Quality & performance',
+    title: 'Forever Grateful',
     description:
-      'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
+      'I am selling my home and Travis was very helpful in making sure I was good to go! I could not have done it without him and I am forever grateful',
     avatar: Avatar2,
     name: 'Denny Hilguston',
     designation: '@denny.hil',
@@ -33,9 +33,9 @@ const data = [
   },
   {
     id: 3,
-    title: 'Layout and organized layers',
+    title: 'Affordable',
     description:
-      'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
+      'It was very affordable and thorough. He saved me lots of time and worked around my busy schedule which I know is very hard to do.',
     avatar: Avatar3,
     name: 'Denny Hilguston',
     designation: '@denny.hil',
@@ -43,9 +43,9 @@ const data = [
   },
   {
     id: 4,
-    title: 'Modern look & trending design',
+    title: 'WOW',
     description:
-      'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
+      'Travis was very knowledegable and helped me save thousands on issues I would not even have known',
     avatar: Avatar4,
     name: 'Denny Hilguston',
     designation: '@denny.hil',
@@ -77,31 +77,61 @@ const responsive = {
 };
 
 const carouselParams = {
-  additionalTransfrom:0,
-  arrows:false,
-  autoPlaySpeed:3000,
-  centerMode:false,
-  className:"",
-  containerClass:"carousel-container",
-  customButtonGroup:<ButtonGroup />,
-  dotListClass:"",
+  additionalTransfrom: 0,
+  arrows: false,
+  autoPlaySpeed: 10000,
+  centerMode: false,
+  className: '',
+  containerClass: 'carousel-container',
+  customButtonGroup: <ButtonGroup />,
+  dotListClass: '',
   draggable: true,
-  focusOnSelect:false,
-  infinite:true,
-  itemClass:"",
+  focusOnSelect: false,
+  infinite: true,
+  itemClass: '',
   keyBoardControl: true,
-  minimumTouchDrag:80,
+  minimumTouchDrag: 80,
   renderButtonGroupOutside: true,
-  renderDotsOutside:false,
-  responsive:responsive,
-  showDots:false,
-  sliderClass:"",
-  slidesToSlide:1,
-}
+  renderDotsOutside: false,
+  responsive: responsive,
+  showDots: false,
+  sliderClass: '',
+  slidesToSlide: 1,
+};
 
 export default function TestimonialCard() {
   return (
-   <h1>Testimonial Card</h1>
+    <section id="testimonial" sx={{ variant: 'section.testimonial' }}>
+      <Container css={{ textAlign: 'center' }}>
+        <SectionHeader
+          slogan="Testimonial"
+          title="Meet Client Satisfaction"
+        ></SectionHeader>
+      </Container>
+      <Box sx={styles.carouselWrapper}>
+        <Carousel {...carouselParams}>
+          {data.map((item) => (
+            <Box sx={styles.reviewCard} key={item.id}>
+              <Rating rating={item.review} />
+              <Heading as="h3" sx={styles.title}>
+                {item.title}
+              </Heading>
+              <Text sx={styles.description}>{item.description}</Text>
+              <div className="card-footer">
+                <div className="image">
+                  <Image src={item.avatar} />
+                </div>
+                <div className="reviwer-info">
+                  <Heading as="h4" sx={styles.heading}>
+                    {item.name}
+                  </Heading>
+                </div>
+              </div>
+            </Box>
+          ))}
+        </Carousel>
+      </Box>
+    </section>
   );
 }
 
@@ -177,7 +207,7 @@ const styles = {
         },
       },
       '.star': {
-        color: 'primary',
+        color: 'text_special',
         mr: '1px',
       },
       '.star-o': {

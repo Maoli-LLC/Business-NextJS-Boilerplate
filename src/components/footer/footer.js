@@ -2,16 +2,37 @@
 import { jsx, Box, Container, Image, Text } from 'theme-ui';
 import { Link } from 'components/link';
 import data from './footer.data';
-import FooterLogo from 'assets/logo.svg';
 
 export default function Footer() {
   return (
-    <h1>Footer</h1>
+    <footer sx={styles.footer}>
+      <Container>
+        <Box sx={styles.footer.footerBottomArea}>
+          <Link path='/'>
+            <p>PrimeTekDigital</p>
+            <Box sx={styles.footer.menus}> 
+              <nav>
+                {data.menuItem.map((item, index) => (
+                  <Link
+                  path={item.path}
+                  key={index}
+                  label={item.label}
+                  sx={styles.footer.link}>
+                  </Link>
+                ))}
+              </nav>
+            </Box>
+          </Link>
+        </Box>
+      </Container>
+
+    </footer>
   );
 }
 
 const styles = {
   footer: {
+    textDecoration:'none',
     footerBottomArea: {
       borderTop: '1px solid',
       borderTopColor: 'border_color',
@@ -29,6 +50,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
+        textDecoration: 'none',
       },
     },
 
