@@ -31,27 +31,26 @@ const data = {
 
 export default function ServiceSection() {
   return (
-    <section sx={{variant: 'section.services'}}>
+    <section sx={{ variant: 'section.services' }} id="about">
       <Container sx={styles.containerBox}>
         <Box sx={styles.thumbnail}>
-          <Image src={pic3} altText ='pict3'/>
+          <Image src={pic3} altText="pict3" />
         </Box>
         <Box sx={styles.contentBox}>
-          <TextFeature title={data.subTitle}/>
+          <TextFeature title={data.subTitle} />
           <Grid sx={styles.grid}>
             {data.features.map((item) => (
               <Box sx={styles.card} key={item.id}>
-                <Image src={item.imgSrc} altText={item.altText}/>
+                <Image src={item.imgSrc} altText={item.altText} />
                 <Box sx={styles.wrapper}>
-                  <Heading sx={styles.wrapper.title}>{item.title}</Heading> 
+                  <Heading sx={styles.wrapper.title}>{item.title}</Heading>
                   <Text sx={styles.wrapper.subTitle}>{item.text}</Text>
                 </Box>
               </Box>
             ))}
-            </Grid> 
-        </Box>  
+          </Grid>
+        </Box>
       </Container>
-
     </section>
   );
 }
