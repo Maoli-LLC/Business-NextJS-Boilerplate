@@ -8,24 +8,26 @@ export default function Footer() {
     <footer sx={styles.footer}>
       <Container>
         <Box sx={styles.footer.footerBottomArea}>
-          <Link path='/'>
+          <Link path="/">
             <p>PrimeTekDigital</p>
-            <Box sx={styles.footer.menus}> 
+            <Box sx={styles.footer.menus}>
               <nav>
                 {data.menuItem.map((item, index) => (
                   <Link
-                  path={item.path}
-                  key={index}
-                  label={item.label}
-                  sx={styles.footer.link}>
-                  </Link>
+                    path={item.path}
+                    key={index}
+                    label={item.label}
+                    sx={styles.footer.link}
+                  ></Link>
                 ))}
               </nav>
             </Box>
+            <Text sx={styles.footer.copyright}>
+              Copyright by {new Date().getFullYear()} PrimeTekDigital
+            </Text>
           </Link>
         </Box>
       </Container>
-
     </footer>
   );
 }
@@ -72,6 +74,7 @@ const styles = {
     copyright: {
       fontSize: [1, '15px'],
       width: '100%',
+      textDecoration:'none'
     },
   },
 };
